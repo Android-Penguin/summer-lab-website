@@ -13,8 +13,80 @@
     align-items: center;
     height: calc(100% - var(--nav-height));
 }
+#floorplan-grid {
+    display: grid;
+    grid-template-areas: 
+            "r r r s s s"
+            "r r r s s s"
+            "r r r . b b"
+            "l l l . b b"
+            "l l l . b b"
+            "l l l . . ."
+            "k k k k w w"
+            "k k k k w w";
+    gap: 2px;
+    width: 60vh;
+    height: 80vh;
+    border: 2px solid var(--dark-blue);
+    background-color: rgb(226, 226, 226);
+}
+#floorplan-grid > div {
+    outline: 2px solid var(--dark-blue);
+    background-size: cover;
+    cursor: pointer;
+}
+#kitchen-area {
+    grid-area: k;
+    background-color: var(--kitchen);
+}
+#kitchen-area:hover { 
+    box-shadow: inset 0 0 10px var(--kitchen-dark);
+    background-image: url(./assets/kitchen_details.svg);
+}
+#living-room-area {
+    grid-area: l;
+    background-color: var(--living-room);
+}
+#living-room-area:hover {
+    box-shadow: inset 0 0 15px var(--living-room-dark);
+    background-image: url(./assets/living_room_details.svg);
+}
+#bedroom-area {
+    grid-area: r;
+    background-color: var(--bedroom);
+}
+#bedroom-area:hover {
+    box-shadow: inset 0 0 15px var(--bedroom-dark);
+    background-image: url(./assets/bedroom_details.svg);
+}
+#laundry-area {
+    grid-area: w;
+    background-color: var(--laundry);
+}
+#laundry-area:hover {
+    box-shadow: inset 0 0 15px var(--laundry-dark);
+    background-image: url(./assets/laundry_details.svg);
+}
+#bathroom-area {
+    grid-area: b;
+    background-color: var(--bathroom);
+}
+#bathroom-area:hover {
+    box-shadow: inset 0 0 15px var(--bathroom-dark);
+    background-image: url(./assets/bathroom_details.svg);
+}
+#study-area {
+    grid-area: s;
+    background-color: var(--study);
+}
+#study-area:hover {
+    box-shadow: inset 0 0 15px var(--study-dark);
+    background-image: url(./assets/study_details.svg);
+}
 
-#temp-floorplan {
-    max-width: 65%;
-    max-height: 90%;
+@media (max-width: 900px) {
+    #floorplan-grid {
+        width: 45vh;
+        height: 60vh;
+    }
 }

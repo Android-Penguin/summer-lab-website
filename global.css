@@ -7,6 +7,19 @@
     --dark-blue: #253758;
     --light-blue: #E0F7FF;
     --yellow: #FFCC00;
+    /* Room colours */
+    --kitchen: #f8d7e0;
+    --kitchen-dark: #e7a2b5;
+    --living-room: #f6d8b6;
+    --living-room-dark: #f6b170;
+    --bedroom: #aeb6db;
+    --bedroom-dark: #6975bd;
+    --laundry: #c7f2de;
+    --laundry-dark: #83c9a5;
+    --bathroom: #d5eef2;
+    --bathroom-dark: #9dd9e4;
+    --study: #e091a7;
+    --study-dark: #b74964;
 }
 
 /* ################# */
