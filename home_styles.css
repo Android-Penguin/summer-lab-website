@@ -67,6 +67,7 @@
     transform: translate(110%, -50%);
 }
 /* Hover effects for rooms */
+#floorplan-grid> div:hover { filter: brightness(1.05); }
 #floorplan-grid > div:hover div { opacity: 0.8; }
 #floorplan-grid > div:hover a { text-decoration: underline; }
 
@@ -74,63 +75,70 @@
 #kitchen-area {
     grid-area: k;
     background-color: var(--kitchen);
+    background-image: url(./assets/kitchen_details.svg);
 }
 #kitchen-area:hover { 
     box-shadow: inset 0 0 10px var(--kitchen-dark);
-    background-image: url(./assets/kitchen_details.svg);
 }
 #living-room-area {
     grid-area: l;
     background-color: var(--living-room);
+    background-image: url(./assets/living_room_details.svg);
 }
 #living-room-area:hover {
     box-shadow: inset 0 0 15px var(--living-room-dark);
-    background-image: url(./assets/living_room_details.svg);
 }
 #bedroom-area {
     grid-area: r;
     background-color: var(--bedroom);
+    background-image: url(./assets/bedroom_details.svg);
 }
 #bedroom-area:hover {
     box-shadow: inset 0 0 15px var(--bedroom-dark);
-    background-image: url(./assets/bedroom_details.svg);
 }
 #laundry-area {
     grid-area: w;
     background-color: var(--laundry);
+    background-image: url(./assets/laundry_details.svg);
 }
 #laundry-area:hover {
     box-shadow: inset 0 0 15px var(--laundry-dark);
-    background-image: url(./assets/laundry_details.svg);
 }
 #bathroom-area {
     grid-area: b;
     background-color: var(--bathroom);
+    background-image: url(./assets/bathroom_details.svg);
 }
 #bathroom-area:hover {
     box-shadow: inset 0 0 15px var(--bathroom-dark);
-    background-image: url(./assets/bathroom_details.svg);
 }
 #study-area {
     grid-area: s;
     background-color: var(--study);
+    background-image: url(./assets/study_details.svg);
 }
 #study-area:hover {
     box-shadow: inset 0 0 15px var(--study-dark);
-    background-image: url(./assets/study_details.svg);
 }
 
 @media (max-width: 900px) {
+    /* Adjust size of house for mobile */
     #floorplan-grid {
         width: 45vh;
         height: 60vh;
     }
+    /* Move room labels to centre of rooms */
     #floorplan-grid > div > div {
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
         font-size: 1.2rem;
     }
+    /* Blue room art */
+    #floorplan-grid > div > a {
+        backdrop-filter: blur(2.5px);
+    }
+    /* Hide arrow chevrons */
     #floorplan-grid > div > div > span {
         display: none;
     }
