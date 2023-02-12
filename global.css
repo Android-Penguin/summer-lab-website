@@ -2,6 +2,7 @@
 :root {
     font-size: 10px;
     --nav-height: 75px;
+    --item-padding: 15px;
 
     /* Colours */
     --dark-blue: #253758;

@@ -32,14 +32,49 @@
         <h2>Total Saved: <span id="savings-span">$0.00</span></h2>
     </div>
 
+    <div id="accordion-container">
+        <div class="accordion-item">
+            <div class="title">
+                <div class="caret-container"><span>&#x2572;</span><span>&#x2571;</span></div>
+                <span>Title</span>
+            </div>
+            <div class="pane">Content</div>
+        </div>
+        <div class="accordion-item active">
+            <div class="title">
+                <div class="caret-container"><span>&#x2572;</span><span>&#x2571;</span></div>
+                <span>Title</span>
+            </div>
+            <div class="pane">Content</div>
+        </div>
+        <div class="accordion-item">
+            <div class="title">
+                <div class="caret-container"><span>&#x2572;</span><span>&#x2571;</span></div>
+                <span>Title</span>
+            </div>
+            <div class="pane">Content</div>
+        </div>
+    </div>
+
     <script>
-        const params = new URLSearchParams(window.location.search);
-        const roomName = document.getElementById("room-name");
+        // Change subnav title based on room
+        const params = new URLSearchParams(window.location.search)
+        const roomName = document.getElementById("room-name")
 
         if(params.has("room")) {
-            roomName.innerHTML = params.get("room");
+            roomName.innerHTML = params.get("room")
         } else {
-            roomName.innerHTML = "Custom Room";
+            roomName.innerHTML = "Custom Room"
+        }
+
+        // Toggle accordion
+        let toggles = document.getElementsByClassName("title")
+        for(item of toggles) {
+            item.addEventListener("click", toggleContent)
+        }
+
+        function toggleContent() {
+            this.parentNode.classList.toggle("active");
         }
 
     </script>

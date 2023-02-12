@@ -23,6 +23,56 @@
     margin-left: auto;
 }
 
+/*! Accordion */
+/* Parent container for accordion items */
+#accordion-container {
+    display: flex;
+    flex-direction: column;
+    margin: 30px 16px 20px 16px;
+    border: 1.5px solid #BFBFBF;
+    border-radius: 8px;
+    background-color: white;
+}
+/* Modular accordion-item */
+.accordion-item {
+    border-bottom: 1px solid #DEDEDE;
+    overflow: hidden;
+}
+.accordion-item:first-child { border-radius: 8px 8px 0 0; }
+.accordion-item:last-child {
+    border-bottom: none;
+    border-radius: 0 0 8px 8px;
+}
+/** Caret (Arrows) */
+.caret-container {
+    display: flex;
+    flex-direction: row;
+    font-size: 1rem;
+}
+/** Title element in accordion */
+.accordion-item .title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: var(--item-padding);
+    font-size: 2rem;
+    cursor: pointer;
+}
+/** Pane element in accordion */
+.accordion-item .pane {
+    max-height: 1px;
+    padding: 0 var(--item-padding) 0 var(--item-padding);
+    font-size: 1.6rem;
+}
+/** ACTIVE accordion settings */
+.accordion-item.active { background-color: #F7F7F8; }
+.accordion-item.active .caret-container { flex-direction: row-reverse; }
+.accordion-item.active .title { font-weight: bold; }
+.accordion-item.active .pane {
+    max-height: 500px;
+    padding: 0 var(--item-padding) var(--item-padding) var(--item-padding);
+}
+
 @media (max-width: 900px) {
     #sub-nav {
         height: auto;
