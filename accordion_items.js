@@ -322,3 +322,107 @@ function addDryer(weeklyHours1, weeklyHours2) {
     // Append item to list
     document.getElementById("accordion-container").appendChild(item)
 }
+
+function calculateMonitor() {
+    let row = this.parentNode
+    let dailyHours = row.getElementsByTagName("input")[0].value
+    let wattage1 = row.getElementsByTagName("input")[1].value
+    let wattage2 = row.getElementsByTagName("input")[2].value
+    row.nextSibling.getElementsByTagName("input")[0].value = twoDP((((wattage1 * dailyHours) / 1000) - ((wattage2 * dailyHours) / 1000)) * 0.25 * 365)
+    updateTotal()
+}
+function addMonitor(dailyHours, wattage1, wattage2) {
+    console.log("adding washing monitor")
+    let item = document.createElement("div")
+    item.classList.add("accordion-item")
+    // Create and append title
+    let title = createTitle("Upgrading to a more energy efficient computer monitor")
+    item.appendChild(title)
+    // Create pane container
+    let content = document.createElement("div")
+    content.classList.add("pane")
+    // Row 1 text and contents
+    let row1 = createRow()
+    let input1 = createInput(dailyHours)
+    let input2 = createInput(wattage1)
+    let input3 = createInput(wattage2)
+    input1.addEventListener("input", calculateMonitor)
+    input2.addEventListener("input", calculateMonitor)
+    input3.addEventListener("input", calculateMonitor)
+    row1.append(
+        createSpan("It's often tempting to find the cheapest monitor available, but spending more on an efficient monitor can have power savings in the long run. Using a monitor for"),
+        input1,
+        createSpan("hours per day, upgrading from a"),
+        input2,
+        createSpan("watt monitor to a"),
+        input3,
+        createSpan("watt monitor")
+    )
+    // Row 2 text and contents
+    let row2 = createRow()
+    let input4 = createInput(twoDP((((wattage1 * dailyHours) / 1000) - ((wattage2 * dailyHours) / 1000)) * 0.25 * 365), true)
+    input4.classList.add("sum")
+    row2.append(
+        createSpan("could save you up to"),
+        input4,
+        createSpan("dollars a year!")
+    )
+    // Append rows to content
+    content.append(row1, row2)
+    // Append content to item
+    item.appendChild(content)
+    // Append item to list
+    document.getElementById("accordion-container").appendChild(item)
+}
+
+function calculateTV() {
+    let row = this.parentNode
+    let dailyHours = row.getElementsByTagName("input")[0].value
+    let wattage1 = row.getElementsByTagName("input")[1].value
+    let wattage2 = row.getElementsByTagName("input")[2].value
+    row.nextSibling.getElementsByTagName("input")[0].value = twoDP((((wattage1 * dailyHours) / 1000) - ((wattage2 * dailyHours) / 1000)) * 0.25 * 365)
+    updateTotal()
+}
+function addTV(dailyHours, wattage1, wattage2) {
+    console.log("adding washing monitor")
+    let item = document.createElement("div")
+    item.classList.add("accordion-item")
+    // Create and append title
+    let title = createTitle("Purchasing a more energy efficient TV")
+    item.appendChild(title)
+    // Create pane container
+    let content = document.createElement("div")
+    content.classList.add("pane")
+    // Row 1 text and contents
+    let row1 = createRow()
+    let input1 = createInput(dailyHours)
+    let input2 = createInput(wattage1)
+    let input3 = createInput(wattage2)
+    input1.addEventListener("input", calculateMonitor)
+    input2.addEventListener("input", calculateMonitor)
+    input3.addEventListener("input", calculateMonitor)
+    row1.append(
+        createSpan("Upgrading your TV can improve your entertainment experience and save on electricity bills. If you watch TV for"),
+        input1,
+        createSpan("hours a day, switching from a"),
+        input2,
+        createSpan("watt TV to a"),
+        input3,
+        createSpan("watt TV")
+    )
+    // Row 2 text and contents
+    let row2 = createRow()
+    let input4 = createInput(twoDP((((wattage1 * dailyHours) / 1000) - ((wattage2 * dailyHours) / 1000)) * 0.25 * 365), true)
+    input4.classList.add("sum")
+    row2.append(
+        createSpan("could save you up to"),
+        input4,
+        createSpan("dollars a year!")
+    )
+    // Append rows to content
+    content.append(row1, row2)
+    // Append content to item
+    item.appendChild(content)
+    // Append item to list
+    document.getElementById("accordion-container").appendChild(item)
+}
