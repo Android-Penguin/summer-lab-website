@@ -158,6 +158,7 @@ function addShower(oldMins, newMins) {
         input2,
         createSpan("minutes every day")
     )
+    // Row 2 text and contents
     let row2 = createRow()
     let input3 = createInput(twoDP(((3750 * ((oldMins-newMins)/60)) / 1000) * 0.25 * 365), true)
     input3.classList.add("sum")
@@ -205,8 +206,109 @@ function addTowelHeater(oldHours, newHours) {
         input2,
         createSpan("hours every day")
     )
+    // Row 2 text and contents
     let row2 = createRow()
     let input3 = createInput(twoDP(((150 * (oldHours - newHours)) / 1000) * 0.25 * 365), true)
+    input3.classList.add("sum")
+    row2.append(
+        createSpan("could save you up to"),
+        input3,
+        createSpan("dollars a year!")
+    )
+    // Append rows to content
+    content.append(row1, row2)
+    // Append content to item
+    item.appendChild(content)
+    // Append item to list
+    document.getElementById("accordion-container").appendChild(item)
+}
+
+function calculateWashingMachine() {
+    let row = this.parentNode
+    let weeklyRuns = row.getElementsByTagName("input")[0].value
+    let wattage1 = row.getElementsByTagName("input")[1].value
+    let wattage2 = row.getElementsByTagName("input")[2].value
+    row.nextSibling.getElementsByTagName("input")[0].value = twoDP(((wattage1 / 1000)-(wattage2/1000)) * 0.25 * weeklyRuns * 52)
+    updateTotal()
+}
+function addWashingMachine(weeklyRuns, wattage1, wattage2) {
+    console.log("adding washing machine")
+    let item = document.createElement("div")
+    item.classList.add("accordion-item")
+    // Create and append title
+    let title = createTitle("Upgrading to a more energy efficient washing machine")
+    item.appendChild(title)
+    // Create pane container
+    let content = document.createElement("div")
+    content.classList.add("pane")
+    // Row 1 text and contents
+    let row1 = createRow()
+    let input1 = createInput(weeklyRuns)
+    let input2 = createInput(wattage1)
+    let input3 = createInput(wattage2)
+    input1.addEventListener("input", calculateWashingMachine)
+    input2.addEventListener("input", calculateWashingMachine)
+    input3.addEventListener("input", calculateWashingMachine)
+    row1.append(
+        createSpan("Older washing machines consumer much higher amounts of power. If you run your washing machine"),
+        input1,
+        createSpan("times per week, upgrading from a"),
+        input2,
+        createSpan("watt washing machine to a"),
+        input3,
+        createSpan("watt machine")
+    )
+    // Row 2 text and contents
+    let row2 = createRow()
+    let input4 = createInput(twoDP(((wattage1 / 1000) - (wattage2 / 1000)) * 0.25 * weeklyRuns * 52), true)
+    input4.classList.add("sum")
+    row2.append(
+        createSpan("could save you up to"),
+        input4,
+        createSpan("dollars a year!")
+    )
+    // Append rows to content
+    content.append(row1, row2)
+    // Append content to item
+    item.appendChild(content)
+    // Append item to list
+    document.getElementById("accordion-container").appendChild(item)
+}
+
+function calculateDryer() {
+    let row = this.parentNode
+    let hours1 = row.getElementsByTagName("input")[0].value
+    let hours2 = row.getElementsByTagName("input")[1].value
+    let hoursPerWeek = hours1 - hours2
+    row.nextSibling.getElementsByTagName("input")[0].value = twoDP(((1500 * hoursPerWeek) / 1000) * 0.25 * 52)
+    updateTotal()
+}
+function addDryer(weeklyHours1, weeklyHours2) {
+    console.log("adding dryer")
+    let item = document.createElement("div")
+    item.classList.add("accordion-item")
+    // Create and append title
+    let title = createTitle("Minimise use of dryer")
+    item.appendChild(title)
+    // Create pane container
+    let content = document.createElement("div")
+    content.classList.add("pane")
+    // Row 1 text and contents
+    let row1 = createRow()
+    let input1 = createInput(weeklyHours1)
+    let input2 = createInput(weeklyHours2)
+    input1.addEventListener("input", calculateDryer)
+    input2.addEventListener("input", calculateDryer)
+    row1.append(
+        createSpan("Dryers are costly to run but the sun is free! Reducing dryer usage from"),
+        input1,
+        createSpan("hours per week to"),
+        input2,
+        createSpan("hours per week")
+    )
+    // Row 2 text and contents
+    let row2 = createRow()
+    let input3 = createInput(twoDP(((1500 * (weeklyHours1-weeklyHours2)) / 1000) * 0.25 * 52), true)
     input3.classList.add("sum")
     row2.append(
         createSpan("could save you up to"),

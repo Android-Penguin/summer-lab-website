@@ -29,7 +29,7 @@
         <a href="./index.html"><img alt="home" src="./assets/home_blue.svg" /></a>
         <h2>></h2>
         <h2 id="room-name"></h2>
-        <h2>Total Saved: <span id="savings-span">$0.00</span></h2>
+        <h2>Total Saved: <span id="savings-span">$0.00</span><span>(per year)</span></h2>
     </div>
 
     <div id="accordion-container">
@@ -88,6 +88,8 @@
                 break
             case "Laundry":
                 addLED(1, 2)
+                addWashingMachine(3, 1400, 400)
+                addDryer(4.5, 1.5)
                 break
             default:
                 addLED(10, 24)
