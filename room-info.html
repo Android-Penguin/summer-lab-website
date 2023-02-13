@@ -32,8 +32,30 @@
         <h2>Total Saved: <span id="savings-span">$0.00</span><span>(per year)</span></h2>
     </div>
 
+    <div id="buttons">
+        <div id="add-btn" onclick="toggleModal()">Add item</div>
+        <div id="reset-page" onclick="function reload(){location.reload();}reload()">Reset page</div>
+    </div>
+
     <div id="accordion-container">
         <!-- Stuff gets added here room by room -->
+    </div>
+
+    <div id="item-overlay">
+        <div>
+            <div id="overlay-header">
+                <h2>Add item</h2>
+                <img onclick="toggleModal()" src="./assets/close_blue.svg" alt="close icon" />
+            </div>
+            <div id="overlay-content">
+                <span onclick="addLED(1, 1)" onmouseup="toggleModal()"><b>+</b> Add LED light</span>
+                <span onclick="addShower(15, 9)" onmouseup="toggleModal()"><b>+</b> Add reduced shower time</span>
+                <span onclick="addTowelHeater(12, 2)" onmouseup="toggleModal()"><b>+</b> Add towel heater</span>
+                <span onclick="addWashingMachine(3, 1400, 400)" onmouseup="toggleModal()"><b>+</b> Add washing machine</span>
+                <span onclick="addDryer(4.5, 1.5)" onmouseup="toggleModal()"><b>+</b> Add dryer</span>
+                <span onclick="addMonitor(12, 80, 30)" onmouseup="toggleModal()"><b>+</b> Add monitor</span>
+            </div>
+        </div>
     </div>
 
     <script src="./accordion_items.js"></script>
@@ -97,9 +119,13 @@
                 addLED(10, 24)
                 break
         }
-
         // Update total saved
         updateTotal()
+
+        const modal = document.getElementById("item-overlay")
+        function toggleModal() {
+            modal.classList.toggle("open")
+        }
     </script>
 </body>
 </html>

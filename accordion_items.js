@@ -9,6 +9,7 @@ function createSpan(text) {
 }
 
 function updateTotal() {
+    console.log("updating total")
     let total = document.getElementById("savings-span")
     let sumItems = document.getElementsByClassName("sum")
     let totalSaved = 0
@@ -23,6 +24,14 @@ function updateTotal() {
 // # Title functions #
 // ###################
 
+function toggleContent() {
+    this.parentNode.classList.toggle("active")
+}
+
+function removeItem() {
+    this.parentNode.parentNode.remove()
+}
+
 function createCaret() {
     // Create caret container
     let caret = document.createElement("div")
@@ -33,8 +42,14 @@ function createCaret() {
     return(caret)
 }
 
-function toggleContent() {
-    this.parentNode.classList.toggle("active")
+function createRemoveIcon() {
+    // Create img
+    let icon = document.createElement("img")
+    icon.classList.add("remove-icon")
+    icon.src = "./assets/remove_blue.svg"
+    icon.alt = "remove item"
+    icon.addEventListener("click", removeItem)
+    return (icon)
 }
 
 function createTitle(titleText) {
@@ -43,7 +58,7 @@ function createTitle(titleText) {
     titleContainer.classList.add("title")
     titleContainer.addEventListener("click", toggleContent)
     // Append caret and title to title container
-    titleContainer.append(createCaret(), createSpan(titleText))
+    titleContainer.append(createCaret(), createSpan(titleText), createRemoveIcon())
     return(titleContainer)
 }
 
@@ -125,6 +140,7 @@ function addLED(bulbs, hours) {
     item.appendChild(content)
     // Append item to list
     document.getElementById("accordion-container").appendChild(item)
+    updateTotal()
 }
 
 function calculateShower() {
@@ -173,6 +189,7 @@ function addShower(oldMins, newMins) {
     item.appendChild(content)
     // Append item to list
     document.getElementById("accordion-container").appendChild(item)
+    updateTotal()
 }
 
 function calculateTowelHeater() {
@@ -221,6 +238,7 @@ function addTowelHeater(oldHours, newHours) {
     item.appendChild(content)
     // Append item to list
     document.getElementById("accordion-container").appendChild(item)
+    updateTotal()
 }
 
 function calculateWashingMachine() {
@@ -273,6 +291,7 @@ function addWashingMachine(weeklyRuns, wattage1, wattage2) {
     item.appendChild(content)
     // Append item to list
     document.getElementById("accordion-container").appendChild(item)
+    updateTotal()
 }
 
 function calculateDryer() {
@@ -321,6 +340,7 @@ function addDryer(weeklyHours1, weeklyHours2) {
     item.appendChild(content)
     // Append item to list
     document.getElementById("accordion-container").appendChild(item)
+    updateTotal()
 }
 
 function calculateMonitor() {
@@ -373,6 +393,7 @@ function addMonitor(dailyHours, wattage1, wattage2) {
     item.appendChild(content)
     // Append item to list
     document.getElementById("accordion-container").appendChild(item)
+    updateTotal()
 }
 
 function calculateTV() {
@@ -425,4 +446,5 @@ function addTV(dailyHours, wattage1, wattage2) {
     item.appendChild(content)
     // Append item to list
     document.getElementById("accordion-container").appendChild(item)
+    updateTotal()
 }
