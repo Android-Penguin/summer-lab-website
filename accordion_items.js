@@ -30,6 +30,7 @@ function toggleContent() {
 
 function removeItem() {
     this.parentNode.parentNode.remove()
+    updateTotal()
 }
 
 function createCaret() {
