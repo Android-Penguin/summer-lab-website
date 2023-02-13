@@ -122,10 +122,10 @@
 
 /** Input colors */
 .accordion-item .pane input {
-    padding-left: 16px;
-    width: 70px;
+    width: 80px;
     border-radius: 5px;
     color: black;
+    text-align: center;
     font-size: 2rem;
     font-weight: bolder;
 }
@@ -153,6 +153,17 @@
 .study input {
     border: 1px solid var(--study-dark);
     background-color: var(--study);
+}
+/* Hiding arrows */
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+/* Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
 }
 
 /* Overlay container for adding items */

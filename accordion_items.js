@@ -16,7 +16,7 @@ function updateTotal() {
     for(item of sumItems) {
         totalSaved += +item.value
     }
-    total.innerHTML = "$" + twoDP(totalSaved)
+    total.innerHTML = "$" + oneDP(totalSaved) + "0"
 }
 
 
@@ -85,8 +85,8 @@ function createInput(defaultValue, readOnly=false) {
     }
     return(input)
 }
-function twoDP(value) {
-    return(parseFloat(value).toFixed(2))
+function oneDP(value) {
+    return(parseFloat(value).toFixed(1))
 }
 
 // #################
@@ -99,7 +99,7 @@ function calculateLED() {
     let hours = row.getElementsByTagName("input")[1].value
     let ogCost = bulbs*((60*hours)/1000)*0.25
     let newCost = bulbs*((9*hours)/1000)*0.25
-    row.nextSibling.getElementsByTagName("input")[0].value = twoDP((ogCost-newCost)*365)
+    row.nextSibling.getElementsByTagName("input")[0].value = oneDP((ogCost-newCost)*365)
     updateTotal()
 }
 function addLED(bulbs, hours) {
@@ -128,7 +128,7 @@ function addLED(bulbs, hours) {
     )
     // Row 2 text and contents
     let row2 = createRow()
-    let input3 = createInput(twoDP((bulbs * ((60 * hours) / 1000) * 0.25 - bulbs * ((9 * hours) / 1000) * 0.25) * 365), true)
+    let input3 = createInput(oneDP((bulbs * ((60 * hours) / 1000) * 0.25 - bulbs * ((9 * hours) / 1000) * 0.25) * 365), true)
     input3.classList.add("sum")
     row2.append(
         createSpan("could save you up to"),
@@ -149,7 +149,7 @@ function calculateShower() {
     let minutes1 = row.getElementsByTagName("input")[0].value
     let minutes2 = row.getElementsByTagName("input")[1].value
     let hours = (minutes1-minutes2)/60
-    row.nextSibling.getElementsByTagName("input")[0].value = twoDP(((3750 * hours) / 1000) * 0.25 * 365)
+    row.nextSibling.getElementsByTagName("input")[0].value = oneDP(((3750 * hours) / 1000) * 0.25 * 365)
     updateTotal()
 }
 function addShower(oldMins, newMins) {
@@ -177,7 +177,7 @@ function addShower(oldMins, newMins) {
     )
     // Row 2 text and contents
     let row2 = createRow()
-    let input3 = createInput(twoDP(((3750 * ((oldMins-newMins)/60)) / 1000) * 0.25 * 365), true)
+    let input3 = createInput(oneDP(((3750 * ((oldMins-newMins)/60)) / 1000) * 0.25 * 365), true)
     input3.classList.add("sum")
     row2.append(
         createSpan("could save you up to"),
@@ -198,7 +198,7 @@ function calculateTowelHeater() {
     let hours1 = row.getElementsByTagName("input")[0].value
     let hours2 = row.getElementsByTagName("input")[1].value
     let hours = hours1 - hours2
-    row.nextSibling.getElementsByTagName("input")[0].value = twoDP(((150 * hours) / 1000) * 0.25 * 365)
+    row.nextSibling.getElementsByTagName("input")[0].value = oneDP(((150 * hours) / 1000) * 0.25 * 365)
     updateTotal()
 }
 function addTowelHeater(oldHours, newHours) {
@@ -226,7 +226,7 @@ function addTowelHeater(oldHours, newHours) {
     )
     // Row 2 text and contents
     let row2 = createRow()
-    let input3 = createInput(twoDP(((150 * (oldHours - newHours)) / 1000) * 0.25 * 365), true)
+    let input3 = createInput(oneDP(((150 * (oldHours - newHours)) / 1000) * 0.25 * 365), true)
     input3.classList.add("sum")
     row2.append(
         createSpan("could save you up to"),
@@ -247,7 +247,7 @@ function calculateWashingMachine() {
     let weeklyRuns = row.getElementsByTagName("input")[0].value
     let wattage1 = row.getElementsByTagName("input")[1].value
     let wattage2 = row.getElementsByTagName("input")[2].value
-    row.nextSibling.getElementsByTagName("input")[0].value = twoDP(((wattage1 / 1000)-(wattage2/1000)) * 0.25 * weeklyRuns * 52)
+    row.nextSibling.getElementsByTagName("input")[0].value = oneDP(((wattage1 / 1000)-(wattage2/1000)) * 0.25 * weeklyRuns * 52)
     updateTotal()
 }
 function addWashingMachine(weeklyRuns, wattage1, wattage2) {
@@ -279,7 +279,7 @@ function addWashingMachine(weeklyRuns, wattage1, wattage2) {
     )
     // Row 2 text and contents
     let row2 = createRow()
-    let input4 = createInput(twoDP(((wattage1 / 1000) - (wattage2 / 1000)) * 0.25 * weeklyRuns * 52), true)
+    let input4 = createInput(oneDP(((wattage1 / 1000) - (wattage2 / 1000)) * 0.25 * weeklyRuns * 52), true)
     input4.classList.add("sum")
     row2.append(
         createSpan("could save you up to"),
@@ -300,7 +300,7 @@ function calculateDryer() {
     let hours1 = row.getElementsByTagName("input")[0].value
     let hours2 = row.getElementsByTagName("input")[1].value
     let hoursPerWeek = hours1 - hours2
-    row.nextSibling.getElementsByTagName("input")[0].value = twoDP(((1500 * hoursPerWeek) / 1000) * 0.25 * 52)
+    row.nextSibling.getElementsByTagName("input")[0].value = oneDP(((1500 * hoursPerWeek) / 1000) * 0.25 * 52)
     updateTotal()
 }
 function addDryer(weeklyHours1, weeklyHours2) {
@@ -328,7 +328,7 @@ function addDryer(weeklyHours1, weeklyHours2) {
     )
     // Row 2 text and contents
     let row2 = createRow()
-    let input3 = createInput(twoDP(((1500 * (weeklyHours1-weeklyHours2)) / 1000) * 0.25 * 52), true)
+    let input3 = createInput(oneDP(((1500 * (weeklyHours1-weeklyHours2)) / 1000) * 0.25 * 52), true)
     input3.classList.add("sum")
     row2.append(
         createSpan("could save you up to"),
@@ -349,7 +349,7 @@ function calculateMonitor() {
     let dailyHours = row.getElementsByTagName("input")[0].value
     let wattage1 = row.getElementsByTagName("input")[1].value
     let wattage2 = row.getElementsByTagName("input")[2].value
-    row.nextSibling.getElementsByTagName("input")[0].value = twoDP((((wattage1 * dailyHours) / 1000) - ((wattage2 * dailyHours) / 1000)) * 0.25 * 365)
+    row.nextSibling.getElementsByTagName("input")[0].value = oneDP((((wattage1 * dailyHours) / 1000) - ((wattage2 * dailyHours) / 1000)) * 0.25 * 365)
     updateTotal()
 }
 function addMonitor(dailyHours, wattage1, wattage2) {
@@ -381,7 +381,7 @@ function addMonitor(dailyHours, wattage1, wattage2) {
     )
     // Row 2 text and contents
     let row2 = createRow()
-    let input4 = createInput(twoDP((((wattage1 * dailyHours) / 1000) - ((wattage2 * dailyHours) / 1000)) * 0.25 * 365), true)
+    let input4 = createInput(oneDP((((wattage1 * dailyHours) / 1000) - ((wattage2 * dailyHours) / 1000)) * 0.25 * 365), true)
     input4.classList.add("sum")
     row2.append(
         createSpan("could save you up to"),
@@ -402,7 +402,7 @@ function calculateTV() {
     let dailyHours = row.getElementsByTagName("input")[0].value
     let wattage1 = row.getElementsByTagName("input")[1].value
     let wattage2 = row.getElementsByTagName("input")[2].value
-    row.nextSibling.getElementsByTagName("input")[0].value = twoDP((((wattage1 * dailyHours) / 1000) - ((wattage2 * dailyHours) / 1000)) * 0.25 * 365)
+    row.nextSibling.getElementsByTagName("input")[0].value = oneDP((((wattage1 * dailyHours) / 1000) - ((wattage2 * dailyHours) / 1000)) * 0.25 * 365)
     updateTotal()
 }
 function addTV(dailyHours, wattage1, wattage2) {
@@ -434,7 +434,7 @@ function addTV(dailyHours, wattage1, wattage2) {
     )
     // Row 2 text and contents
     let row2 = createRow()
-    let input4 = createInput(twoDP((((wattage1 * dailyHours) / 1000) - ((wattage2 * dailyHours) / 1000)) * 0.25 * 365), true)
+    let input4 = createInput(oneDP((((wattage1 * dailyHours) / 1000) - ((wattage2 * dailyHours) / 1000)) * 0.25 * 365), true)
     input4.classList.add("sum")
     row2.append(
         createSpan("could save you up to"),
