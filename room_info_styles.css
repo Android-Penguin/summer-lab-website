@@ -36,7 +36,7 @@
 }
 /* Modular accordion-item */
 .accordion-item {
-    border-bottom: 1px solid #DEDEDE;
+    border-bottom: 2.5px solid #DEDEDE;
     overflow: hidden;
 }
 .accordion-item:first-child { border-radius: 8px 8px 0 0; }
