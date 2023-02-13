@@ -17,7 +17,7 @@
 }
 #sub-nav h2 {
     margin: 0;
-    font-size: 2.4rem;
+    font-size: 2.8rem;
 }
 #sub-nav h2:last-of-type {
     margin-left: auto;
@@ -32,6 +32,7 @@
     border: 1.5px solid #BFBFBF;
     border-radius: 8px;
     background-color: white;
+    overflow: hidden;
 }
 /* Modular accordion-item */
 .accordion-item {
@@ -43,26 +44,40 @@
     border-bottom: none;
     border-radius: 0 0 8px 8px;
 }
-/** Caret (Arrows) */
-.caret-container {
-    display: flex;
-    flex-direction: row;
-    font-size: 1rem;
-}
 /** Title element in accordion */
 .accordion-item .title {
     display: flex;
     align-items: center;
     gap: 8px;
     padding: var(--item-padding);
-    font-size: 2rem;
+    font-size: 2.2rem;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
     cursor: pointer;
+}
+/** Caret (Arrows) */
+.caret-container {
+    display: flex;
+    flex-direction: row;
+    font-size: 1rem;
 }
 /** Pane element in accordion */
 .accordion-item .pane {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
     max-height: 1px;
     padding: 0 var(--item-padding) 0 var(--item-padding);
-    font-size: 1.6rem;
+    opacity: 0;
+    font-size: 2rem;
+}
+/* Pane row */
+.row {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 5px;
 }
 /** ACTIVE accordion settings */
 .accordion-item.active { background-color: #F7F7F8; }
@@ -70,7 +85,43 @@
 .accordion-item.active .title { font-weight: bold; }
 .accordion-item.active .pane {
     max-height: 500px;
-    padding: 0 var(--item-padding) var(--item-padding) var(--item-padding);
+    padding: 10px var(--item-padding) var(--item-padding) var(--item-padding);
+    opacity: 1;
+}
+
+/** Input colors */
+.accordion-item .pane input {
+    width: 60px;
+    border-radius: 5px;
+    color: black;
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bolder;
+}
+.accordion-item .pane input.sum { width: 100px; }
+.kitchen input {
+    border: 1px solid var(--kitchen-dark);
+    background-color: var(--kitchen);
+}
+.living-room input {
+    border: 1px solid var(--living-room-dark);
+    background-color: var(--living-room);
+}
+.bedroom input {
+    border: 1px solid var(--bedroom-dark);
+    background-color: var(--bedroom);
+}
+.laundry input {
+    border: 1px solid var(--laundry-dark);
+    background-color: var(--laundry);
+}
+.bathroom input {
+    border: 1px solid var(--bathroom-dark);
+    background-color: var(--bathroom);
+}
+.study input {
+    border: 1px solid var(--study-dark);
+    background-color: var(--study);
 }
 
 @media (max-width: 900px) {
@@ -81,6 +132,9 @@
     }
     #sub-nav a:first-of-type, h2:first-of-type {
         display: none;
+    }
+    #sub-nav h2 {
+        font-size: 2.5rem;
     }
     #sub-nav h2:last-of-type {
         margin-left: 0;

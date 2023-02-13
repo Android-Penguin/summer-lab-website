@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>geni > room info</title>
+    <title>geni | room info</title>
     <link rel="icon" href="./assets/bulb.ico">
     <link rel="stylesheet" href="./global.css">
     <link rel="stylesheet" href="./room_info_styles.css">
@@ -33,36 +33,26 @@
     </div>
 
     <div id="accordion-container">
-        <div class="accordion-item">
-            <div class="title">
-                <div class="caret-container"><span>&#x2572;</span><span>&#x2571;</span></div>
-                <span>Title</span>
-            </div>
-            <div class="pane">Content</div>
-        </div>
-        <div class="accordion-item active">
-            <div class="title">
-                <div class="caret-container"><span>&#x2572;</span><span>&#x2571;</span></div>
-                <span>Title</span>
-            </div>
-            <div class="pane">Content</div>
-        </div>
-        <div class="accordion-item">
-            <div class="title">
-                <div class="caret-container"><span>&#x2572;</span><span>&#x2571;</span></div>
-                <span>Title</span>
-            </div>
-            <div class="pane">Content</div>
-        </div>
+        <!-- Stuff gets added here room by room -->
     </div>
 
+    <script src="./accordion_items.js"></script>
     <script>
         // Change subnav title based on room
         const params = new URLSearchParams(window.location.search)
         const roomName = document.getElementById("room-name")
+        const accordionContainer = document.getElementById("accordion-container")
+        let paramsRoom
 
         if(params.has("room")) {
-            roomName.innerHTML = params.get("room")
+            paramsRoom = params.get("room")
+            roomName.innerHTML = paramsRoom
+            if(paramsRoom == "Living Room") {
+                accordionContainer.classList.add("living-room")
+            } else {
+                accordionContainer.classList.add(paramsRoom.toLowerCase())
+            }
+
         } else {
             roomName.innerHTML = "Custom Room"
         }
@@ -70,13 +60,40 @@
         // Toggle accordion
         let toggles = document.getElementsByClassName("title")
         for(item of toggles) {
-            item.addEventListener("click", toggleContent)
+            item.addEventListener("click", toggleContentLOCAL)
         }
 
-        function toggleContent() {
-            this.parentNode.classList.toggle("active");
+        function toggleContentLOCAL() {
+            this.parentNode.classList.toggle("active")
         }
 
+        // Add list items based on room
+        switch(paramsRoom) {
+            case "Bedroom":
+                addLED(3, 2)
+                break
+            case "Living Room":
+                addLED(5, 5)
+                break
+            case "Kitchen":
+                addLED(4, 3)
+                break
+            case "Study":
+                addLED(2, 4)
+                break
+            case "Bathroom":
+                addLED(3, 3)
+                break
+            case "Laundry":
+                addLED(1, 2)
+                break
+            default:
+                addLED(10, 24)
+                break
+        }
+
+        // Update total saved
+        updateTotal()
     </script>
 </body>
 </html>
