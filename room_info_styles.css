@@ -91,10 +91,10 @@
 
 /** Input colors */
 .accordion-item .pane input {
+    padding-left: 16px;
     width: 60px;
     border-radius: 5px;
     color: black;
-    text-align: center;
     font-size: 2rem;
     font-weight: bolder;
 }
