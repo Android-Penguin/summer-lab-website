@@ -194,7 +194,9 @@ input[type=number] {
     min-width: 250px;
     width: auto;
     height: auto;
+    border: 1px solid rgba(0, 0, 0, 0.15);
     border-radius: 8px;
+    box-shadow: 10px 10px 14px rgba(0, 0, 0, 0.15);
     background-color: white;
 }
 /* Header div */
